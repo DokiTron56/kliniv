@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-cl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kliniv - Tu Guía de Autocuidado</title>
+    
+    <link rel="icon" type="image/png" href="{% static 'img/isotipo.png' %}">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="page-transition-enter">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
+                <img src="{% static 'img/logo.png' %}" alt="Logo Kliniv" class="logo-kliniv-img">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav fw-bold">
+                    <li class="nav-item"><a class="nav-link text-kliniv-oscuro" href="{% url 'inicio' %}">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-kliniv-oscuro" href="{% url 'evaluacion' %}">Evaluación</a></li>
+                    <li class="nav-item"><a class="nav-link text-kliniv-oscuro" href="{% url 'inicio' %}#consejos">Consejos de Salud</a></li>
+                    <li class="nav-item"><a class="nav-link text-kliniv-claro" href="{% url 'inicio' %}#estadisticas"><i class="bi bi-graph-up me-1"></i>Estadísticas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <a href="tel:131" class="btn btn-danger btn-emergencia">
+        <i class="bi bi-telephone-fill me-2"></i>Emergencia 131
+    </a>
+
+    <footer class="legal-warning py-4 mt-auto text-center">
+        <div class="container">
+            <p class="mb-1"><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i><strong>Advertencia Legal:</strong></p>
+            <p class="mb-0">Las recomendaciones entregadas por Kliniv son solo para autocuidado y uso responsable de medicamentos de venta libre. <strong>Esto no reemplaza indicación médica profesional.</strong></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Un micro-retraso para asegurar que el CSS registre el estado inicial
+            setTimeout(function() {
+                document.body.classList.add('page-transition-enter-active');
+            }, 30); 
+
+            const links = document.querySelectorAll('a[href]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href.includes('#') || href.startsWith('tel:') || this.target === '_blank') {
+                        return; 
+                    }
+
+                    const vaAEvaluacion = href.includes('evaluacion');
+                    const vuelveAInicio = href === '/';
+                    const estamosEnInicio = window.location.pathname === '/';
+
+                    if (vaAEvaluacion || (vuelveAInicio && !estamosEnInicio)) {
+                        e.preventDefault(); 
+                        
+                        document.body.classList.remove('page-transition-enter-active');
+                        document.body.classList.add('page-transition-exit');
+
+                        // Reducimos la espera de 400ms a 250ms
+                        setTimeout(function() {
+                            window.location.href = href;
+                        }, 250);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

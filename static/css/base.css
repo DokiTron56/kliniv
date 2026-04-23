@@ -1,0 +1,84 @@
+/* --- LA PALETA DE KLINIV --- */
+:root {
+    --kliniv-oscuro: #35307D;
+    --kliniv-claro: #fe8eff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+main {
+    flex: 1;
+}
+
+/* Clases de texto personalizadas */
+.text-kliniv-oscuro { color: var(--kliniv-oscuro) !important; }
+.text-kliniv-claro { color: var(--kliniv-claro) !important; }
+
+/* Botón principal Kliniv */
+.btn-kliniv {
+    background-color: var(--kliniv-oscuro);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-kliniv:hover {
+    background-color: #27235c;
+    color: #fe8eff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(53, 48, 125, 0.3);
+}
+
+/* Estilos para el logo imagen */
+.logo-kliniv-img {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+/* Botón de emergencia flotante */
+.btn-emergencia {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* Footer legal */
+.legal-warning {
+    background-color: #f1f1f1;
+    color: var(--kliniv-oscuro);
+    font-size: 0.9rem;
+    border-top: 3px solid var(--kliniv-claro);
+}
+
+/* --- ANIMACIÓN PRO: VERSIÓN ÁGIL (250ms) --- */
+
+body {
+    /* Tiempo reducido de 0.4s a 0.25s, curva ajustada para aceleración rápida */
+    transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* El movimiento ahora es mucho más sutil (1.015 en vez de 1.03) */
+.page-transition-enter {
+    opacity: 0;
+    transform: scale(1.015) translateY(10px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.page-transition-exit {
+    opacity: 0;
+    transform: scale(0.985) translateY(-10px);
+}

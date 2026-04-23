@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Any ❤️</title>
+    <style>
+        :root {
+            --color-amor: #ff4d6d;
+            --color-fondo: #1a1a2e;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--color-fondo);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Fondo de Corazones Animados */
+        .heart {
+            position: absolute;
+            color: var(--color-amor);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            animation: float 10s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Contenedor del Mensaje */
+        .card-sorpresa {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            z-index: 10;
+            transform: scale(0.8);
+            opacity: 0;
+            animation: aparecer 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes aparecer {
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--color-amor);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .ps {
+            display: block;
+            margin-top: 2rem;
+            color: var(--color-amor);
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.4rem;
+        }
+
+        /* Corazón central latiendo */
+        .main-heart {
+            font-size: 4rem;
+            display: inline-block;
+            animation: latido 1.2s infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 7000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+
+    <div class="card-sorpresa">
+        <div class="main-heart">❤️</div>
+        <h1>¡Hola Any!</h1>
+        <p>
+            No todo en Kliniv es medicina y estadísticas. 
+            Quería recordarte que eres la razón por la que este proyecto tiene sentido y amor. 
+            Gracias por ser mi equipo y mi inspiración.
+        </p>
+        <span class="ps">Atte: Tu Feli</span>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row align-items-center text-center text-md-start mt-4 mb-5 pb-5">
+    <div class="col-md-6 mb-4">
+        <h1 class="display-4 fw-bold text-kliniv-oscuro">Evalúa tus síntomas de forma sencilla.</h1>
+        <p class="lead mt-3 text-muted">Obtén recomendaciones de autocuidado confiables al instante.</p>
+        <a href="{% url 'evaluacion' %}" class="btn btn-kliniv btn-lg mt-3 px-5 py-3 rounded-pill fw-bold">
+            Empezar Mi Evaluación <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+    </div>
+    <div class="col-md-6 text-center">
+        <img src="{% static 'img/isotipo.png' %}" alt="Logo Kliniv" class="img-fluid" style="max-width: 380px; filter: drop-shadow(0px 15px 15px rgba(254, 142, 255, 0.2)); animation: flotar 6s ease-in-out infinite;">
+        
+        <style>
+            @keyframes flotar {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+                100% { transform: translateY(0px); }
+            }
+        </style>
+    </div>
+</div>
+
+<hr class="text-muted opacity-25 mb-5">
+
+<div class="row pt-2 mb-5 pb-5">
+    
+    <div id="estadisticas" class="col-lg-6 mb-5 mb-lg-0 pe-lg-4">
+        <h3 class="fw-bold text-kliniv-oscuro mb-4"><i class="bi bi-bar-chart-fill me-2"></i>Estadísticas de Consultas</h3>
+        
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card shadow-sm border-0 text-white p-4" style="background-color: var(--kliniv-oscuro); border-radius: 15px;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="mb-0 fs-5 opacity-75">Consultas Totales</p>
+                            <h2 class="display-5 fw-bold mb-0">{{ total_consultas|default:"0" }}</h2>
+                        </div>
+                        <i class="bi bi-clipboard2-pulse text-kliniv-claro" style="font-size: 3.5rem; opacity: 0.8;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="card shadow-sm border-0 p-4" style="border-radius: 15px; border-top: 4px solid var(--kliniv-claro) !important;">
+                    <h5 class="fw-bold text-kliniv-oscuro mb-3">Síntomas más comunes</h5>
+                    <div style="position: relative; height: 250px; width: 100%;">
+                        <canvas id="graficoSintomas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="consejos" class="col-lg-6 ps-lg-4">
+        <h3 class="fw-bold text-kliniv-oscuro mb-4"><i class="bi bi-journal-medical me-2"></i>Consejos de Salud</h3>
+        
+        <div class="row">
+            {% for consejo in consejos|slice:":3" %}
+            <div class="col-12 mb-4">
+                <div class="card shadow-sm h-100 border-0" style="border-left: 4px solid var(--kliniv-claro) !important; border-radius: 15px;">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-kliniv-oscuro">{{ consejo.titulo }}</h5>
+                        <p class="text-muted small mb-2"><i class="bi bi-calendar3 me-1"></i> {{ consejo.fecha_publicacion|date:"d/m/Y" }}</p>
+                        <p class="card-text text-muted">{{ consejo.contenido|truncatewords:25 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center p-5 bg-white shadow-sm" style="border-radius: 15px;">
+                <i class="bi bi-file-earmark-medical text-muted" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-3">Próximamente publicaremos consejos de salud aquí.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('graficoSintomas');
+        
+        const nombresSintomas = [];
+        const cantidades = [];
+
+        {% for item in sintomas_frecuentes %}
+            nombresSintomas.push("{{ item.sintoma__nombre|default:'Síntoma Eliminado'|escapejs }}");
+            cantidades.push({{ item.total|default:0 }});
+        {% endfor %}
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: nombresSintomas,
+                datasets: [{
+                    label: 'Número de Consultas',
+                    data: cantidades,
+                    backgroundColor: '#fe8eff', 
+                    borderRadius: 5,
+                    maxBarThickness: 50 // Mantiene las barras de un tamaño razonable
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: { 
+                    y: { 
+                        beginAtZero: true,
+                        suggestedMax: 5, 
+                        ticks: { stepSize: 1 } 
+                    } 
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

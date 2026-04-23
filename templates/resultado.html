@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 col-lg-7">
+        
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-kliniv-oscuro">Resultados de tu Evaluación</h2>
+            <p class="text-muted">Análisis para: <strong>{{ sintoma.nombre }}</strong> (Dolor: {{ dolor }}/10)</p>
+        </div>
+
+        <div class="card shadow-sm border-0" style="border-top: 4px solid var(--kliniv-claro) !important; border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+                
+                {% if recomendacion %}
+                    <h4 class="text-kliniv-oscuro fw-bold mb-3"><i class="bi bi-clipboard-check text-kliniv-claro me-2"></i>Recomendación de Autocuidado</h4>
+                    <p class="fs-5">{{ recomendacion.texto_recomendacion }}</p>
+                    
+                    {% if recomendacion.medicamentos_sugeridos %}
+                    <div class="alert alert-info mt-4 border-0 bg-light" role="alert">
+                        <h5 class="alert-heading text-kliniv-oscuro fw-bold"><i class="bi bi-capsule text-kliniv-claro me-2"></i>Medicamentos Sugeridos (Venta Libre)</h5>
+                        <p class="mb-0">{{ recomendacion.medicamentos_sugeridos }}</p>
+                    </div>
+                    {% endif %}
+
+                {% else %}
+                    <div class="alert alert-warning border-0" role="alert">
+                        <h4 class="alert-heading fw-bold"><i class="bi bi-exclamation-circle me-2"></i>Requiere Evaluación Médica</h4>
+                        <p>Para este nivel de dolor o síntoma, te sugerimos buscar atención médica presencial o consultar a un profesional de la salud. No disponemos de una recomendación de autocuidado en este momento.</p>
+                    </div>
+                {% endif %}
+
+                <div class="d-grid mt-5">
+                    <a href="{% url 'inicio' %}" class="btn btn-outline-secondary rounded-pill fw-bold">Volver al Inicio</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

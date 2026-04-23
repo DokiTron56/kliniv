@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/evaluacion.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0 tarjeta-evaluacion">
+            <div class="card-body p-5">
+                <h2 class="text-center mb-4 text-kliniv-oscuro fw-bold">Evaluación de Síntomas</h2>
+                <p class="text-center text-muted mb-4">Por favor, completa los siguientes datos para recibir recomendaciones de autocuidado.</p>
+
+                <form action="{% url 'procesar_evaluacion' %}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+                        <label for="sintoma" class="form-label fw-bold text-kliniv-oscuro">¿Qué síntoma principal presentas?</label>
+                        <select class="form-select form-select-lg" id="sintoma" name="sintoma" required>
+                            <option value="" selected disabled>Selecciona una opción...</option>
+                            {% for sintoma in sintomas %}
+                                <option value="{{ sintoma.id }}">{{ sintoma.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="dolor" class="form-label fw-bold text-kliniv-oscuro">Nivel de molestia o dolor (1 al 10)</label>
+                        <div class="d-flex justify-content-between text-muted small mb-2">
+                            <span>1 - Leve</span>
+                            <span>10 - Insoportable</span>
+                        </div>
+                        <input type="range" class="form-range" min="1" max="10" step="1" id="dolor" name="dolor" value="5" oninput="document.getElementById('valorDolor').innerText = this.value">
+                        <div class="text-center mt-2 fw-bold text-kliniv-oscuro fs-5">
+                            Nivel seleccionado: <span id="valorDolor" class="text-kliniv-claro">5</span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid mt-5">
+                        <button type="submit" class="btn btn-kliniv btn-lg rounded-pill fw-bold">Ver Recomendaciones</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
