@@ -4,12 +4,19 @@
     --kliniv-claro: #fe8eff;
 }
 
+/* Evitar el scroll horizontal accidental (Error #1 en desarrollo móvil) */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #f8f9fa;
 }
+
 main {
     flex: 1;
 }
@@ -37,9 +44,10 @@ main {
     height: 45px;
     width: auto;
     display: block;
+    transition: height 0.3s ease;
 }
 
-/* Botón de emergencia flotante */
+/* Botón de emergencia flotante (Escritorio) */
 .btn-emergencia {
     position: fixed;
     bottom: 20px;
@@ -49,6 +57,7 @@ main {
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 /* Footer legal */
@@ -57,17 +66,17 @@ main {
     color: var(--kliniv-oscuro);
     font-size: 0.9rem;
     border-top: 3px solid var(--kliniv-claro);
+    position: relative;
+    z-index: 10;
 }
 
 /* --- ANIMACIÓN PRO: VERSIÓN ÁGIL (250ms) --- */
 
 body {
-    /* Tiempo reducido de 0.4s a 0.25s, curva ajustada para aceleración rápida */
     transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
                 transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* El movimiento ahora es mucho más sutil (1.015 en vez de 1.03) */
 .page-transition-enter {
     opacity: 0;
     transform: scale(1.015) translateY(10px);
@@ -81,4 +90,64 @@ body {
 .page-transition-exit {
     opacity: 0;
     transform: scale(0.985) translateY(-10px);
+}
+
+
+/* =========================================================
+   📱 OPTIMIZACIÓN RESPONSIVE "PRO" PARA CELULARES
+   ========================================================= */
+
+@media (max-width: 768px) {
+    
+    /* 1. Ajuste de Tipografía Base: 
+       Reducimos un poco el tamaño base para que los textos largos y 
+       títulos de Bootstrap no rompan la pantalla. */
+    html {
+        font-size: 95%; 
+    }
+
+    /* 2. Logo más discreto para que el menú de hamburguesa respire */
+    .logo-kliniv-img {
+        height: 35px;
+    }
+
+    /* 3. Footer: Espacio extra vital 
+       Le damos un margen interno gigante abajo para asegurarnos de que 
+       el botón de emergencia NUNCA tape el texto de "Advertencia Legal". */
+    .legal-warning {
+        padding-bottom: 90px !important; 
+        font-size: 0.85rem;
+    }
+
+    /* 4. Rediseño del Botón de Emergencia (Estilo iOS / App Nativa)
+       En vez de estar escondido en una esquina, lo centramos abajo, lo 
+       hacemos más ancho y le damos una sombra más pronunciada. 
+       ¡Es un botón salvavidas, tiene que ser facilísimo de tocar con el pulgar! */
+    .btn-emergencia {
+        bottom: 25px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 350px;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 1.1rem;
+        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4); 
+    }
+    
+    /* Evitamos que el hover rompa el centrado en dispositivos móviles */
+    .btn-emergencia:hover {
+        transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* 5. Animaciones más ligeras
+       Los celulares sufren procesando el "scale" (zoom). Lo cambiamos solo 
+       a un deslizamiento vertical (translateY) para que vaya a 60fps sin lag. */
+    .page-transition-enter {
+        transform: translateY(15px);
+    }
+    .page-transition-exit {
+        transform: translateY(-15px);
+    }
 }
