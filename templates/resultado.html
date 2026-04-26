@@ -1,40 +1,57 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<div class="row justify-content-center mt-4">
-    <div class="col-md-8 col-lg-7">
+<div class="row justify-content-center mt-4 mb-5">
+    <div class="col-md-8">
         
-        <div class="text-center mb-4">
-            <h2 class="fw-bold text-kliniv-oscuro">Resultados de tu Evaluación</h2>
-            <p class="text-muted">Análisis para: <strong>{{ sintoma.nombre }}</strong> (Dolor: {{ dolor }}/10)</p>
-        </div>
-
-        <div class="card shadow-sm border-0" style="border-top: 4px solid var(--kliniv-claro) !important; border-radius: 15px;">
+        <div class="card shadow-sm border-0" style="border-radius: 20px; overflow: hidden;">
+            
+            <div class="card-header text-white text-center py-4" style="background-color: var(--kliniv-oscuro);">
+                <h2 class="mb-0 fw-bold"><i class="bi bi-clipboard2-pulse me-2"></i>Resultados de tu Evaluación</h2>
+            </div>
+            
             <div class="card-body p-4 p-md-5">
                 
+                <div class="text-center mb-4">
+                    <h4 class="fw-bold text-kliniv-oscuro">Síntoma: {{ sintoma.nombre }}</h4>
+                    <p class="fs-5 text-muted">Nivel de dolor reportado: <span class="badge bg-danger rounded-pill fs-6">{{ dolor }}/10</span></p>
+                </div>
+
+                <hr class="opacity-25 mb-4">
+
                 {% if recomendacion %}
-                    <h4 class="text-kliniv-oscuro fw-bold mb-3"><i class="bi bi-clipboard-check text-kliniv-claro me-2"></i>Recomendación de Autocuidado</h4>
-                    <p class="fs-5">{{ recomendacion.texto_recomendacion }}</p>
                     
+                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #ffffff; border-left: 5px solid var(--kliniv-claro);">
+                        <h5 class="fw-bold text-kliniv-oscuro"><i class="bi bi-check-circle-fill text-success me-2"></i>Recomendación de Autocuidado:</h5>
+                        <p class="mb-0 text-muted">{{ recomendacion.texto_recomendacion }}</p>
+                    </div>
+
                     {% if recomendacion.medicamentos_sugeridos %}
-                    <div class="alert alert-info mt-4 border-0 bg-light" role="alert">
-                        <h5 class="alert-heading text-kliniv-oscuro fw-bold"><i class="bi bi-capsule text-kliniv-claro me-2"></i>Medicamentos Sugeridos (Venta Libre)</h5>
-                        <p class="mb-0">{{ recomendacion.medicamentos_sugeridos }}</p>
+                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #f8f9fa; border-left: 5px solid var(--kliniv-oscuro);">
+                        <h5 class="fw-bold text-kliniv-oscuro"><i class="bi bi-capsule text-primary me-2"></i>Sugerencia de Botiquín (Venta Libre):</h5>
+                        <p class="mb-0 text-muted">{{ recomendacion.medicamentos_sugeridos }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if recomendacion.advertencias %}
+                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #fff8eb; border-left: 5px solid #ffc107;">
+                        <h5 class="fw-bold text-dark"><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>¡Atención! Señales de Alerta:</h5>
+                        <p class="mb-0 text-dark">{{ recomendacion.advertencias }}</p>
                     </div>
                     {% endif %}
 
                 {% else %}
-                    <div class="alert alert-warning border-0" role="alert">
-                        <h4 class="alert-heading fw-bold"><i class="bi bi-exclamation-circle me-2"></i>Requiere Evaluación Médica</h4>
-                        <p>Para este nivel de dolor o síntoma, te sugerimos buscar atención médica presencial o consultar a un profesional de la salud. No disponemos de una recomendación de autocuidado en este momento.</p>
+                    <div class="alert alert-info text-center shadow-sm" style="border-radius: 15px;">
+                        <i class="bi bi-info-circle-fill fs-3 d-block mb-2"></i>
+                        No tenemos una recomendación específica para este nivel de dolor. Te sugerimos descansar, hidratarte y monitorear tus síntomas.
                     </div>
                 {% endif %}
 
-                <div class="d-grid mt-5">
-                    <a href="{% url 'inicio' %}" class="btn btn-outline-secondary rounded-pill fw-bold">Volver al Inicio</a>
+                <div class="text-center mt-5">
+                    <a href="{% url 'inicio' %}" class="btn btn-outline-secondary btn-lg rounded-pill px-4 me-2 mb-2">Volver al Inicio</a>
+                    <a href="{% url 'evaluacion' %}" class="btn btn-kliniv btn-lg rounded-pill px-4 mb-2">Hacer nueva evaluación</a>
                 </div>
-
+                
             </div>
         </div>
     </div>

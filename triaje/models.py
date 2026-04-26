@@ -8,14 +8,21 @@ class Sintoma(models.Model):
         return self.nombre
 
 class Recomendacion(models.Model):
-    sintoma_relacionado = models.ForeignKey(Sintoma, on_delete=models.CASCADE)
+    sintoma_relacionado = models.ForeignKey('Sintoma', on_delete=models.CASCADE)
     nivel_dolor_minimo = models.IntegerField(default=1)
     nivel_dolor_maximo = models.IntegerField(default=10)
     texto_recomendacion = models.TextField()
     medicamentos_sugeridos = models.CharField(max_length=200, help_text="Solo venta libre")
+    
+    # --- NUEVO CAMPO AGREGADO ---
+    advertencias = models.TextField(
+        blank=True, 
+        default="", 
+        help_text="Advertencias de riesgo (Ej: Si el dolor persiste por más de 3 días, acuda a un médico)."
+    )
 
     def __str__(self):
-        return f"Recomendación para {self.sintoma_relacionado.nombre}"
+        return f"Recomendación para {self.sintoma_relacionado.nombre} (Dolor: {self.nivel_dolor_minimo}-{self.nivel_dolor_maximo})"
 
 class Consulta(models.Model):
     fecha_hora = models.DateTimeField(auto_now_add=True)
