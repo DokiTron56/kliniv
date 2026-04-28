@@ -12,14 +12,6 @@
     </div>
     <div class="col-md-6 text-center">
         <img src="{% static 'img/isotipo.png' %}" alt="Logo Kliniv" class="img-fluid" style="max-width: 380px; filter: drop-shadow(0px 15px 15px rgba(254, 142, 255, 0.2)); animation: flotar 6s ease-in-out infinite;">
-        
-        <style>
-            @keyframes flotar {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-20px); }
-                100% { transform: translateY(0px); }
-            }
-        </style>
     </div>
 </div>
 
@@ -57,33 +49,151 @@
     <div id="consejos" class="col-lg-6 ps-lg-4">
         <h3 class="fw-bold text-kliniv-oscuro mb-4"><i class="bi bi-journal-medical me-2"></i>Consejos de Salud</h3>
         
-        <div class="row">
-            {% for consejo in consejos|slice:":3" %}
-            <div class="col-12 mb-4">
-                <div class="card shadow-sm h-100 border-0" style="border-left: 4px solid var(--kliniv-claro) !important; border-radius: 15px;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold text-kliniv-oscuro">{{ consejo.titulo }}</h5>
-                        <p class="text-muted small mb-2"><i class="bi bi-calendar3 me-1"></i> {{ consejo.fecha_publicacion|date:"d/m/Y" }}</p>
-                        <p class="card-text text-muted">{{ consejo.contenido|truncatewords:25 }}</p>
+        <div class="pe-2 consejos-scroll" style="max-height: 520px; overflow-y: auto; overflow-x: hidden;">
+            
+            {% for consejo in consejos %}
+            
+            <div class="card shadow-sm mb-4 border-0 consejo-card" 
+                 style="border-left: 4px solid var(--kliniv-claro) !important; border-radius: 15px; cursor: pointer; transition: all 0.3s ease;"
+                 data-bs-toggle="collapse" 
+                 data-bs-target="#consejo{{ consejo.id }}" 
+                 aria-expanded="false" 
+                 aria-controls="consejo{{ consejo.id }}">
+                
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="pe-3">
+                            <h5 class="card-title fw-bold text-kliniv-oscuro mb-0">{{ consejo.titulo }}</h5>
+                        </div>
+                        <i class="bi bi-chevron-down text-kliniv-claro fs-4 arrow-icon" style="transition: transform 0.3s ease;"></i>
+                    </div>
+
+                    <div class="collapse mt-3" id="consejo{{ consejo.id }}">
+                        <hr class="text-muted opacity-25 mb-3 mt-3">
+                        <div class="card-text text-muted" style="font-size: 0.95rem;">
+                            {{ consejo.contenido|safe }}
+                        </div>
                     </div>
                 </div>
             </div>
+            
             {% empty %}
             <div class="col-12 text-center p-5 bg-white shadow-sm" style="border-radius: 15px;">
                 <i class="bi bi-file-earmark-medical text-muted" style="font-size: 3rem;"></i>
                 <p class="text-muted mt-3">Próximamente publicaremos consejos de salud aquí.</p>
             </div>
             {% endfor %}
+            
         </div>
     </div>
 
+</div>
+
+<hr class="text-muted opacity-25 mb-5 mt-5">
+
+<div class="row mb-5 text-center">
+    <div class="col-12 mb-4">
+        <h2 class="display-6 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-heart-pulse-fill text-kliniv-claro me-2"></i>Hábitos Saludables
+        </h2>
+        <p class="lead text-muted">Mejora tu bienestar con hábitos diarios.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_alimentacion.png' %}" alt="Alimentación" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Aliméntate Balanceado</h5>
+                <p class="text-muted small mb-0">Incluye frutas, verduras y proteínas en tu dieta diaria.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_agua.png' %}" alt="Hidratación" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Hidrátate Bien</h5>
+                <p class="text-muted small mb-0">Toma al menos 2 litros de agua al día.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_sueno.png' %}" alt="Sueño" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Duerme lo Suficiente</h5>
+                <p class="text-muted small mb-0">Duerme 7~8 horas por noche para descansar.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_ejercicio.png' %}" alt="Ejercicio" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Haz Ejercicio</h5>
+                <p class="text-muted small mb-0">Realiza actividad física al menos 30 minutos al día.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_estres.png' %}" alt="Estrés" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Controla el Estrés</h5>
+                <p class="text-muted small mb-0">Practica la meditación y la respiración profunda.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_higiene.png' %}" alt="Higiene" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Cuida tu Higiene</h5>
+                <p class="text-muted small mb-0">Lávate las manos y mantiene la higiene personal.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_tabaco.png' %}" alt="Evitar Tabaco" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Evita Tabaco y Alcohol</h5>
+                <p class="text-muted small mb-0">No fumes y limita el consumo de alcohol.</p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+                <div class="icon-circle">
+                    <img src="{% static 'img/icono_salud.png' %}" alt="Salud" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
+                <h5 class="fw-bold text-kliniv-oscuro">Revisa tu Salud</h5>
+                <p class="text-muted small mb-0">Haz chequeos médicos periódicos.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 mt-5">
+        <p class="text-muted small fst-italic">
+            Consulta a un profesional de la salud ante cualquier duda o síntoma persistente.
+        </p>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const ctx = document.getElementById('graficoSintomas');
-        
         const nombresSintomas = [];
         const cantidades = [];
 
@@ -101,24 +211,76 @@
                     data: cantidades,
                     backgroundColor: '#fe8eff', 
                     borderRadius: 5,
-                    maxBarThickness: 50 // Mantiene las barras de un tamaño razonable
+                    maxBarThickness: 50
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 scales: { 
-                    y: { 
-                        beginAtZero: true,
-                        suggestedMax: 5, 
-                        ticks: { stepSize: 1 } 
-                    } 
+                    y: { beginAtZero: true, suggestedMax: 5, ticks: { stepSize: 1 } } 
                 }
             }
         });
     });
 </script>
+
+<style>
+    /* Animación del isotipo */
+    @keyframes flotar {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* Magia del acordeón: Rotar la flechita cuando la tarjeta está expandida */
+    .consejo-card[aria-expanded="true"] .arrow-icon {
+        transform: rotate(180deg);
+        color: var(--kliniv-oscuro) !important;
+    }
+
+    /* Magia del acordeón: Cambiar el borde izquierdo al abrirse para resaltar */
+    .consejo-card[aria-expanded="true"] {
+        border-left: 6px solid var(--kliniv-oscuro) !important;
+        background-color: #fcfcfc;
+    }
+
+    /* Scrollbar minimalista solo para la zona de consejos */
+    .consejos-scroll::-webkit-scrollbar { width: 6px; }
+    .consejos-scroll::-webkit-scrollbar-track { background: transparent; }
+    .consejos-scroll::-webkit-scrollbar-thumb { background: rgba(254, 142, 255, 0.4); border-radius: 10px; }
+    .consejos-scroll::-webkit-scrollbar-thumb:hover { background: var(--kliniv-claro); }
+
+    /* Estilos para la nueva sección de Hábitos */
+    .icon-circle {
+        width: 75px;
+        height: 75px;
+        background: linear-gradient(135deg, rgba(254, 142, 255, 0.15), rgba(53, 48, 125, 0.05));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px auto;
+        font-size: 2.2rem;
+        color: var(--kliniv-oscuro);
+        transition: all 0.4s ease;
+    }
+
+    /* Efecto al pasar el mouse sobre la tarjeta */
+    .habito-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .habito-card:hover {
+        transform: translateY(-8px);
+        border-bottom: 4px solid var(--kliniv-claro) !important;
+    }
+
+    .habito-card:hover .icon-circle {
+        transform: scale(1.1) rotate(5deg);
+        background: var(--kliniv-claro);
+        /* Quitamos el color de letra blanco aquí porque ahora son imágenes, no fuentes */
+    }
+</style>
 {% endblock %}

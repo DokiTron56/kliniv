@@ -13,8 +13,15 @@
             <div class="card-body p-4 p-md-5">
                 
                 <div class="text-center mb-4">
-                    <h4 class="fw-bold text-kliniv-oscuro">Síntoma: {{ sintoma.nombre }}</h4>
-                    <p class="fs-5 text-muted">Nivel de dolor reportado: <span class="badge bg-danger rounded-pill fs-6">{{ dolor }}/10</span></p>
+                    <h4 class="fw-bold text-kliniv-oscuro mb-2">Síntoma: {{ sintoma.nombre }}</h4>
+                    
+                    {% if sintoma.descripcion %}
+                    <p class="text-muted fst-italic mb-3 px-md-5" style="font-size: 0.95rem;">
+                        "{{ sintoma.descripcion }}"
+                    </p>
+                    {% endif %}
+                    
+                    <p class="fs-5 text-muted mb-0">Nivel de dolor reportado: <span class="badge bg-danger rounded-pill fs-6">{{ dolor }}/10</span></p>
                 </div>
 
                 <hr class="opacity-25 mb-4">

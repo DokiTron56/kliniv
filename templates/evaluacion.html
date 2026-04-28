@@ -21,13 +21,22 @@
                         <select class="form-select form-select-lg" id="sintoma" name="sintoma" required>
                             <option value="" selected disabled>Selecciona una opción...</option>
                             {% for sintoma in sintomas %}
-                                <option value="{{ sintoma.id }}">{{ sintoma.nombre }}</option>
+                                <option value="{{ sintoma.id }}" data-descripcion="{{ sintoma.descripcion|default:'' }}">
+                                    {{ sintoma.nombre }}
+                                </option>
                             {% endfor %}
                         </select>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="dolor" class="form-label fw-bold text-kliniv-oscuro">Nivel de molestia o dolor (1 al 10)</label>
+                    <div id="caja-descripcion" class="mb-4 p-3 d-none shadow-sm" style="background-color: #fdfdfd; border-left: 4px solid var(--kliniv-claro); border-radius: 0 10px 10px 0;">
+                        <p class="mb-0 text-muted fst-italic" style="font-size: 0.9rem;">
+                            <i class="bi bi-info-circle text-kliniv-claro me-1"></i>
+                            <span id="texto-descripcion">Aquí aparecerá la descripción...</span>
+                        </p>
+                    </div>
+
+                    <div class="mb-4 mt-2">
+                        <label for="dolor" class="form-label fw-bold text-kliniv-oscuro">Nivel de molestia o incomodidad (1 al 10)</label>
                         <div class="d-flex justify-content-between text-muted small mb-2">
                             <span>1 - Leve</span>
                             <span>10 - Insoportable</span>
@@ -38,12 +47,41 @@
                         </div>
                     </div>
 
-                    <div class="d-grid mt-5">
+                    <div class="d-grid gap-3 mt-5">
                         <button type="submit" class="btn btn-kliniv btn-lg rounded-pill fw-bold">Ver Recomendaciones</button>
+                        <a href="{% url 'inicio' %}" class="btn btn-light btn-lg rounded-pill fw-bold text-muted border">
+                            <i class="bi bi-arrow-left me-2"></i>Volver al Inicio
+                        </a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectSintoma = document.getElementById('sintoma');
+        const cajaDescripcion = document.getElementById('caja-descripcion');
+        const textoDescripcion = document.getElementById('texto-descripcion');
+
+        // Escuchamos cada vez que el usuario cambie de opción en el selector
+        selectSintoma.addEventListener('change', function() {
+            // Buscamos qué opción seleccionó
+            const opcionSeleccionada = this.options[this.selectedIndex];
+            
+            // Extraemos el texto oculto de esa opción
+            const descripcion = opcionSeleccionada.getAttribute('data-descripcion');
+
+            // Si hay descripción, mostramos la caja. Si no, la ocultamos.
+            if (descripcion && descripcion.trim() !== '') {
+                textoDescripcion.innerText = descripcion;
+                cajaDescripcion.classList.remove('d-none'); // Quita la clase que oculta la caja
+            } else {
+                cajaDescripcion.classList.add('d-none'); // Vuelve a ocultar la caja
+                textoDescripcion.innerText = '';
+            }
+        });
+    });
+</script>
 {% endblock %}
