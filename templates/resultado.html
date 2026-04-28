@@ -21,7 +21,7 @@
                     </p>
                     {% endif %}
                     
-                    <p class="fs-5 text-muted mb-0">Nivel de dolor reportado: <span class="badge bg-danger rounded-pill fs-6">{{ dolor }}/10</span></p>
+                    <p class="fs-5 text-muted mb-0">Nivel de molestia reportado: <span class="badge bg-danger rounded-pill fs-6">{{ dolor }}/10</span></p>
                 </div>
 
                 <hr class="opacity-25 mb-4">
@@ -40,6 +40,14 @@
                     </div>
                     {% endif %}
 
+                    <!-- NUEVO BLOQUE DE CONTRAINDICACIONES -->
+                    {% if recomendacion.contraindicaciones %}
+                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #fff0f0; border-left: 5px solid #dc3545;">
+                        <h5 class="fw-bold text-danger"><i class="bi bi-slash-circle-fill me-2"></i>Contraindicaciones:</h5>
+                        <p class="mb-0 text-dark">{{ recomendacion.contraindicaciones }}</p>
+                    </div>
+                    {% endif %}
+
                     {% if recomendacion.advertencias %}
                     <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #fff8eb; border-left: 5px solid #ffc107;">
                         <h5 class="fw-bold text-dark"><i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>¡Atención! Señales de Alerta:</h5>
@@ -50,7 +58,7 @@
                 {% else %}
                     <div class="alert alert-info text-center shadow-sm" style="border-radius: 15px;">
                         <i class="bi bi-info-circle-fill fs-3 d-block mb-2"></i>
-                        No tenemos una recomendación específica para este nivel de dolor. Te sugerimos descansar, hidratarte y monitorear tus síntomas.
+                        No tenemos una recomendación específica para este nivel de molestia. Te sugerimos descansar, hidratarte y monitorear tus síntomas.
                     </div>
                 {% endif %}
 
