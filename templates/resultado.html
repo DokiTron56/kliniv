@@ -28,13 +28,13 @@
 
                 {% if recomendacion %}
                     
-                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #ffffff; border-left: 5px solid var(--kliniv-claro);">
+                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: rgba(254, 142, 255, 0.08); border-left: 5px solid var(--kliniv-claro);">
                         <h5 class="fw-bold text-kliniv-oscuro"><i class="bi bi-check-circle-fill text-success me-2"></i>Recomendación de Autocuidado:</h5>
                         <p class="mb-0 text-muted">{{ recomendacion.texto_recomendacion }}</p>
                     </div>
 
                     {% if recomendacion.medicamentos_sugeridos %}
-                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: #f8f9fa; border-left: 5px solid var(--kliniv-oscuro);">
+                    <div class="p-4 mb-4 rounded-3 shadow-sm" style="background-color: rgba(53, 48, 125, 0.04); border-left: 5px solid var(--kliniv-oscuro);">
                         <h5 class="fw-bold text-kliniv-oscuro"><i class="bi bi-capsule text-primary me-2"></i>Sugerencia de Botiquín (Venta Libre):</h5>
                         <p class="mb-0 text-muted">{{ recomendacion.medicamentos_sugeridos }}</p>
                     </div>

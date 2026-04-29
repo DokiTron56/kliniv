@@ -17,6 +17,7 @@
 
 <hr class="text-muted opacity-25 mb-5">
 
+<!-- ESTADÍSTICAS Y CONSEJOS (INTACTOS) -->
 <div class="row pt-2 mb-5 pb-5">
     
     <div id="estadisticas" class="col-lg-6 mb-5 mb-lg-0 pe-lg-4">
@@ -91,7 +92,8 @@
 
 <hr class="text-muted opacity-25 mb-5 mt-5">
 
-<div class="row mb-5 text-center">
+<!-- ANCLA HÁBITOS (CON DISEÑO MÓVIL 2 COLUMNAS) -->
+<div id="habitos" class="row mb-5 text-center pt-4">
     <div class="col-12 mb-4">
         <h2 class="display-6 fw-bold text-kliniv-oscuro">
             <i class="bi bi-heart-pulse-fill text-kliniv-claro me-2"></i>Hábitos Saludables
@@ -99,133 +101,361 @@
         <p class="lead text-muted">Mejora tu bienestar con hábitos diarios.</p>
     </div>
 
-    <div class="row g-4 justify-content-center">
-        
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+    <!-- Ajuste g-2 para móviles -->
+    <div class="row g-2 g-md-4 justify-content-center">
+        <!-- Tarjetas de Hábitos -->
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_alimentacion.png' %}" alt="Alimentación" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_alimentacion.png' %}" alt="Alimentación" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Aliméntate Balanceado</h5>
-                <p class="text-muted small mb-0">Incluye frutas, verduras y proteínas en tu dieta diaria.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Aliméntate Balanceado</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Incluye frutas, verduras y proteínas.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_agua.png' %}" alt="Hidratación" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_agua.png' %}" alt="Hidratación" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Hidrátate Bien</h5>
-                <p class="text-muted small mb-0">Toma al menos 2 litros de agua al día.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Hidrátate Bien</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Toma al menos 2 litros de agua al día.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_sueno.png' %}" alt="Sueño" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_sueno.png' %}" alt="Sueño" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Duerme lo Suficiente</h5>
-                <p class="text-muted small mb-0">Duerme 7~8 horas por noche para descansar.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Duerme lo Suficiente</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Duerme 7~8 horas por noche.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_ejercicio.png' %}" alt="Ejercicio" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_ejercicio.png' %}" alt="Ejercicio" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Haz Ejercicio</h5>
-                <p class="text-muted small mb-0">Realiza actividad física al menos 30 minutos al día.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Haz Ejercicio</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Actividad física al menos 30 min al día.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_estres.png' %}" alt="Estrés" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_estres.png' %}" alt="Estrés" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Controla el Estrés</h5>
-                <p class="text-muted small mb-0">Practica la meditación y la respiración profunda.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Controla el Estrés</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Practica la respiración profunda.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_higiene.png' %}" alt="Higiene" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_higiene.png' %}" alt="Higiene" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Cuida tu Higiene</h5>
-                <p class="text-muted small mb-0">Lávate las manos y mantiene la higiene personal.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Cuida tu Higiene</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Lávate las manos y cuida tu higiene.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_tabaco.png' %}" alt="Evitar Tabaco" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_tabaco.png' %}" alt="Evitar Tabaco" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Evita Tabaco y Alcohol</h5>
-                <p class="text-muted small mb-0">No fumes y limita el consumo de alcohol.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Evita Tabaco y Alcohol</h6>
+                <p class="text-muted mb-0 fs-mobile-text">No fumes y limita tu consumo.</p>
             </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-3">
-            <div class="card h-100 border-0 shadow-sm habito-card p-3" style="border-radius: 20px;">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
                 <div class="icon-circle">
-                    <img src="{% static 'img/icono_salud.png' %}" alt="Salud" style="width: 40px; height: 40px; object-fit: contain;">
+                    <img src="{% static 'img/icono_salud.png' %}" alt="Salud" class="habito-img">
                 </div>
-                <h5 class="fw-bold text-kliniv-oscuro">Revisa tu Salud</h5>
-                <p class="text-muted small mb-0">Haz chequeos médicos periódicos.</p>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Revisa tu Salud</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Haz chequeos médicos periódicos.</p>
             </div>
         </div>
-
-    </div>
-
-    <div class="col-12 mt-5">
-        <p class="text-muted small fst-italic">
-            Consulta a un profesional de la salud ante cualquier duda o síntoma persistente.
-        </p>
     </div>
 </div>
 
+<hr class="text-muted opacity-25 mb-5 mt-5">
+
+<!-- ANCLA MITOS (CON DISEÑO MÓVIL 2 COLUMNAS) -->
+<div id="mitos" class="row mb-5 pt-4">
+    <div class="col-12 text-center mb-5">
+        <h2 class="display-6 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-patch-question-fill text-kliniv-claro me-2"></i>Mitos y Verdades
+        </h2>
+        <p class="lead text-muted">Despeja tus dudas sobre la salud con información médica real.</p>
+    </div>
+
+    <div class="col-lg-10 mx-auto">
+        <!-- Mito 1 -->
+        <div class="row align-items-stretch mb-4 g-2 g-md-0">
+            <div class="col-6 col-md-5 text-center text-md-end">
+                <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
+                    <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
+                    <p class="mb-0 text-muted fs-mobile-mito">Los antibióticos curan el resfriado.</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
+                <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
+            </div>
+            <div class="col-6 col-md-5 text-center text-md-start">
+                <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
+                    <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
+                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">Los resfriados son virales, no se tratan con antibióticos.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mito 2 -->
+        <div class="row align-items-stretch mb-4 g-2 g-md-0">
+            <div class="col-6 col-md-5 text-center text-md-end">
+                <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
+                    <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
+                    <p class="mb-0 text-muted fs-mobile-mito">Si sudas, bajas de peso rápido.</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
+                <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
+            </div>
+            <div class="col-6 col-md-5 text-center text-md-start">
+                <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
+                    <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
+                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">Sudando pierdes agua, no grasa. Requiere dieta y ejercicio.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mito 3 -->
+        <div class="row align-items-stretch mb-4 g-2 g-md-0">
+            <div class="col-6 col-md-5 text-center text-md-end">
+                <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
+                    <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
+                    <p class="mb-0 text-muted fs-mobile-mito">Comer de noche engorda siempre.</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
+                <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
+            </div>
+            <div class="col-6 col-md-5 text-center text-md-start">
+                <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
+                    <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
+                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">Importa lo que comes y las calorías totales, no la hora.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="text-muted opacity-25 mb-5 mt-5">
+
+<!-- ANCLA CALENDARIO (DISEÑO PREMIUM) -->
+<div id="calendario" class="row mb-5 pt-4">
+    <div class="col-12 text-center mb-5">
+        <h2 class="display-6 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-calendar2-heart-fill text-kliniv-claro me-2"></i>Calendario de Salud
+        </h2>
+        <p class="lead text-muted">Prevención inteligente adaptada a cada época del año.</p>
+    </div>
+
+    <div class="col-lg-11 mx-auto">
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Primavera -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm seasonal-card text-start" style="border-radius: 20px; overflow: hidden;">
+                    <div style="height: 5px; background: linear-gradient(90deg, #10b981, #6ee7b7);"></div>
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="season-icon spring-icon me-3">
+                                <i class="bi bi-flower1"></i>
+                            </div>
+                            <h4 class="mb-0 fw-bold text-kliniv-oscuro">Primavera</h4>
+                        </div>
+                        <ul class="list-unstyled text-muted mb-0 custom-list">
+                            <li class="mb-3"><i class="bi bi-check-circle-fill spring-text me-2"></i>Control de alergias</li>
+                            <li class="mb-3"><i class="bi bi-check-circle-fill spring-text me-2"></i>Vacuna antigripal</li>
+                            <li><i class="bi bi-check-circle-fill spring-text me-2"></i>Protección de piel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verano -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm seasonal-card text-start" style="border-radius: 20px; overflow: hidden;">
+                    <div style="height: 5px; background: linear-gradient(90deg, #f59e0b, #fcd34d);"></div>
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="season-icon summer-icon me-3">
+                                <i class="bi bi-brightness-high-fill"></i>
+                            </div>
+                            <h4 class="mb-0 fw-bold text-kliniv-oscuro">Verano</h4>
+                        </div>
+                        <ul class="list-unstyled text-muted mb-0 custom-list">
+                            <li class="mb-3"><i class="bi bi-check-circle-fill summer-text me-2"></i>Protección solar FPS 50+</li>
+                            <li class="mb-3"><i class="bi bi-check-circle-fill summer-text me-2"></i>Hidratación extra</li>
+                            <li><i class="bi bi-check-circle-fill summer-text me-2"></i>Cuidado de los pies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Otoño -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm seasonal-card text-start" style="border-radius: 20px; overflow: hidden;">
+                    <div style="height: 5px; background: linear-gradient(90deg, #ef4444, #fca5a5);"></div>
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="season-icon autumn-icon me-3">
+                                <i class="bi bi-tree-fill"></i>
+                            </div>
+                            <h4 class="mb-0 fw-bold text-kliniv-oscuro">Otoño</h4>
+                        </div>
+                        <ul class="list-unstyled text-muted mb-0 custom-list">
+                            <li class="mb-3"><i class="bi bi-check-circle-fill autumn-text me-2"></i>Refuerzo Vitamina C</li>
+                            <li class="mb-3"><i class="bi bi-check-circle-fill autumn-text me-2"></i>Revisar botiquín</li>
+                            <li><i class="bi bi-check-circle-fill autumn-text me-2"></i>Adaptar rutinas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invierno -->
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm seasonal-card text-start" style="border-radius: 20px; overflow: hidden;">
+                    <div style="height: 5px; background: linear-gradient(90deg, #3b82f6, #93c5fd);"></div>
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="season-icon winter-icon me-3">
+                                <i class="bi bi-snow"></i>
+                            </div>
+                            <h4 class="mb-0 fw-bold text-kliniv-oscuro">Invierno</h4>
+                        </div>
+                        <ul class="list-unstyled text-muted mb-0 custom-list">
+                            <li class="mb-3"><i class="bi bi-check-circle-fill winter-text me-2"></i>Prevención resfriados</li>
+                            <li class="mb-3"><i class="bi bi-check-circle-fill winter-text me-2"></i>Abrigarse en capas</li>
+                            <li><i class="bi bi-check-circle-fill winter-text me-2"></i>Cuidar las manos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ANCLA BOTIQUÍN (CON DISEÑO MÓVIL 2 COLUMNAS) -->
+<div id="botiquin" class="row mb-5 text-center pt-4">
+    <div class="col-12 mb-4">
+        <h2 class="display-6 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-bag-plus-fill text-kliniv-claro me-2"></i>Botiquín Básico en Casa
+        </h2>
+        <p class="lead text-muted">Lo esencial que nunca debe faltar para emergencias menores.</p>
+    </div>
+
+    <div class="row g-2 g-md-3 justify-content-center">
+        <!-- Ítem 1 -->
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-thermometer-half fs-1 mb-2 text-danger"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Termómetro</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Controlar fiebre</p>
+            </div>
+        </div>
+        <!-- Ítem 2 -->
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-capsule fs-1 mb-2 text-primary"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Analgésicos</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Dolores y fiebre</p>
+            </div>
+        </div>
+        <!-- Ítem 3 -->
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-bandaid fs-1 mb-2 text-warning"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Gasas y Vendas</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Heridas y cortes</p>
+            </div>
+        </div>
+        <!-- Ítem 4 -->
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-shield-plus fs-1 mb-2 text-info"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Antiséptico</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Limpiar heridas</p>
+            </div>
+        </div>
+        <!-- Ítem 5 -->
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-scissors fs-1 mb-2 text-secondary"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Tijeras y Pinzas</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Retirar objetos</p>
+            </div>
+        </div>
+        <!-- Ítem 6 -->
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-droplet-half fs-1 mb-2" style="color: var(--kliniv-claro);"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Crema Piel</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Resequedad y sol</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT ORIGINAL DE ESTADÍSTICAS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const ctx = document.getElementById('graficoSintomas');
-        const nombresSintomas = [];
-        const cantidades = [];
+        if(ctx) {
+            const nombresSintomas = [];
+            const cantidades = [];
 
-        {% for item in sintomas_frecuentes %}
-            nombresSintomas.push("{{ item.sintoma__nombre|default:'Síntoma Eliminado'|escapejs }}");
-            cantidades.push({{ item.total|default:0 }});
-        {% endfor %}
+            {% for item in sintomas_frecuentes %}
+                nombresSintomas.push("{{ item.sintoma__nombre|default:'Síntoma Eliminado'|escapejs }}");
+                cantidades.push({{ item.total|default:0 }});
+            {% endfor %}
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: nombresSintomas,
-                datasets: [{
-                    label: 'Número de Consultas',
-                    data: cantidades,
-                    backgroundColor: '#fe8eff', 
-                    borderRadius: 5,
-                    maxBarThickness: 50
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: { 
-                    y: { beginAtZero: true, suggestedMax: 5, ticks: { stepSize: 1 } } 
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: nombresSintomas,
+                    datasets: [{
+                        label: 'Número de Consultas',
+                        data: cantidades,
+                        backgroundColor: '#fe8eff', 
+                        borderRadius: 5,
+                        maxBarThickness: 50
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { 
+                        y: { beginAtZero: true, suggestedMax: 5, ticks: { stepSize: 1 } } 
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 </script>
 
+<!-- CSS INTEGRADO (INCLUYE RESPONSIVO) -->
 <style>
     /* Animación del isotipo */
     @keyframes flotar {
@@ -252,7 +482,7 @@
     .consejos-scroll::-webkit-scrollbar-thumb { background: rgba(254, 142, 255, 0.4); border-radius: 10px; }
     .consejos-scroll::-webkit-scrollbar-thumb:hover { background: var(--kliniv-claro); }
 
-    /* Estilos para la nueva sección de Hábitos */
+    /* Estilos base para círculos y hover */
     .icon-circle {
         width: 75px;
         height: 75px;
@@ -266,21 +496,88 @@
         color: var(--kliniv-oscuro);
         transition: all 0.4s ease;
     }
-
-    /* Efecto al pasar el mouse sobre la tarjeta */
+    .habito-img {
+        width: 40px; 
+        height: 40px; 
+        object-fit: contain;
+    }
     .habito-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .habito-card:hover {
         transform: translateY(-8px);
         border-bottom: 4px solid var(--kliniv-claro) !important;
     }
-
     .habito-card:hover .icon-circle {
         transform: scale(1.1) rotate(5deg);
         background: var(--kliniv-claro);
-        /* Quitamos el color de letra blanco aquí porque ahora son imágenes, no fuentes */
+    }
+
+    /* =========================================
+       MAGIA RESPONSIVE: AJUSTES PARA CELULAR
+       ========================================= */
+    .fs-mobile-title { font-size: 1rem; }
+    .fs-mobile-text { font-size: 0.85rem; }
+    .fs-mobile-list { font-size: 0.9rem; }
+    .fs-mobile-mito { font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+        /* Achicamos iconos para que quepan 2 tarjetas */
+        .icon-circle {
+            width: 55px;
+            height: 55px;
+            margin-bottom: 10px;
+        }
+        .habito-img {
+            width: 30px;
+            height: 30px;
+        }
+        /* Achicamos la tipografía para que no se desborde */
+        .fs-mobile-title { font-size: 0.85rem !important; }
+        .fs-mobile-text { font-size: 0.70rem !important; }
+        .fs-mobile-list { font-size: 0.75rem !important; }
+        .fs-mobile-mito { font-size: 0.80rem !important; }
+    }
+
+    /* =========================================
+       MAGIA PREMIUM: CALENDARIO DE SALUD
+       ========================================= */
+    .seasonal-card {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .seasonal-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important;
+    }
+    
+    .season-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 14px; /* Cuadrito estilo iOS */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+    }
+    
+    /* Colores elegantes por estación */
+    .spring-icon { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+    .spring-text { color: #10b981; }
+
+    .summer-icon { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+    .summer-text { color: #f59e0b; }
+
+    .autumn-icon { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; }
+    .autumn-text { color: #ef4444; }
+
+    .winter-icon { background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+    .winter-text { color: #3b82f6; }
+
+    .custom-list li {
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
     }
 </style>
 {% endblock %}

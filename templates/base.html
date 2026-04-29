@@ -13,11 +13,39 @@
     
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
+    <style>
+        /* Magia UX: Scroll suave para los enlaces ancla */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+        /* Diseño elegante para las opciones del menú desplegable */
+        .dropdown-menu {
+            padding: 10px;
+        }
+        .dropdown-item {
+            transition: all 0.2s ease;
+        }
+        .dropdown-item:hover {
+            background-color: rgba(254, 142, 255, 0.1); 
+            color: var(--kliniv-oscuro) !important;
+            border-radius: 8px;
+            transform: translateX(5px); 
+        }
+        /* Hover súper limpio para enlaces simples */
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--kliniv-claro) !important;
+        }
+    </style>
+
     {% block extra_css %}{% endblock %}
 </head>
 <body class="page-transition-enter">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-2 sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
                 <img src="{% static 'img/logo.png' %}" alt="Logo Kliniv" class="logo-kliniv-img">
@@ -28,11 +56,24 @@
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav fw-bold">
-                    <li class="nav-item"><a class="nav-link text-kliniv-oscuro" href="{% url 'inicio' %}">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link text-kliniv-oscuro" href="{% url 'evaluacion' %}">Evaluación</a></li>
-                    <li class="nav-item"><a class="nav-link text-kliniv-oscuro" href="{% url 'inicio' %}#consejos">Consejos de Salud</a></li>
-                    <li class="nav-item"><a class="nav-link text-kliniv-claro" href="{% url 'inicio' %}#estadisticas"><i class="bi bi-graph-up me-1"></i>Estadísticas</a></li>
+                <ul class="navbar-nav fw-bold align-items-center gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-kliniv-oscuro px-3" href="{% url 'inicio' %}">Inicio</a>
+                    </li>
+                    
+                    <!-- MENÚ DESPLEGABLE PRO -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-kliniv-oscuro px-3" href="#" id="navbarBienestar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Guía de Bienestar
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg mt-2" aria-labelledby="navbarBienestar" style="border-radius: 15px;">
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#consejos"><i class="bi bi-journal-medical text-kliniv-claro me-2"></i>Consejos de Salud</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#habitos"><i class="bi bi-heart-pulse-fill text-kliniv-claro me-2"></i>Hábitos Saludables</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#mitos"><i class="bi bi-patch-question-fill text-kliniv-claro me-2"></i>Mitos y Verdades</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#calendario"><i class="bi bi-calendar2-heart-fill text-kliniv-claro me-2"></i>Calendario</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#botiquin"><i class="bi bi-bag-plus-fill text-kliniv-claro me-2"></i>Botiquín Básico</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -58,7 +99,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Un micro-retraso para asegurar que el CSS registre el estado inicial
             setTimeout(function() {
                 document.body.classList.add('page-transition-enter-active');
             }, 30); 
@@ -83,7 +123,6 @@
                         document.body.classList.remove('page-transition-enter-active');
                         document.body.classList.add('page-transition-exit');
 
-                        // Reducimos la espera de 400ms a 250ms
                         setTimeout(function() {
                             window.location.href = href;
                         }, 250);
