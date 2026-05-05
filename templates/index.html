@@ -198,62 +198,34 @@
     </div>
 
     <div class="col-lg-10 mx-auto">
-        <!-- Mito 1 -->
+        
+        {% for mito_item in mitos %}
         <div class="row align-items-stretch mb-4 g-2 g-md-0">
             <div class="col-6 col-md-5 text-center text-md-end">
                 <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
                     <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
-                    <p class="mb-0 text-muted fs-mobile-mito">Los antibióticos curan el resfriado.</p>
+                    <p class="mb-0 text-muted fs-mobile-mito">{{ mito_item.mito }}</p>
                 </div>
             </div>
+            
             <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
                 <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
             </div>
+            
             <div class="col-6 col-md-5 text-center text-md-start">
                 <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
                     <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
-                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">Los resfriados son virales, no se tratan con antibióticos.</p>
+                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">{{ mito_item.verdad }}</p>
                 </div>
             </div>
         </div>
+        
+        {% empty %}
+        <div class="col-12 text-center p-4 bg-light shadow-sm" style="border-radius: 15px;">
+            <p class="text-muted mb-0 fst-italic">Pronto publicaremos nuevos mitos de salud aquí.</p>
+        </div>
+        {% endfor %}
 
-        <!-- Mito 2 -->
-        <div class="row align-items-stretch mb-4 g-2 g-md-0">
-            <div class="col-6 col-md-5 text-center text-md-end">
-                <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
-                    <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
-                    <p class="mb-0 text-muted fs-mobile-mito">Si sudas, bajas de peso rápido.</p>
-                </div>
-            </div>
-            <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
-                <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
-            </div>
-            <div class="col-6 col-md-5 text-center text-md-start">
-                <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
-                    <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
-                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">Sudando pierdes agua, no grasa. Requiere dieta y ejercicio.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mito 3 -->
-        <div class="row align-items-stretch mb-4 g-2 g-md-0">
-            <div class="col-6 col-md-5 text-center text-md-end">
-                <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
-                    <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
-                    <p class="mb-0 text-muted fs-mobile-mito">Comer de noche engorda siempre.</p>
-                </div>
-            </div>
-            <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
-                <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
-            </div>
-            <div class="col-6 col-md-5 text-center text-md-start">
-                <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
-                    <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
-                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">Importa lo que comes y las calorías totales, no la hora.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

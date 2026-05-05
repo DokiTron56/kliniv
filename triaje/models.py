@@ -46,3 +46,17 @@ class Consejo(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class MitoVerdad(models.Model):
+    mito = models.CharField(max_length=200, help_text="Ej: Los antibióticos curan el resfriado.")
+    verdad = models.CharField(max_length=200, help_text="Ej: Los resfriados son virales, no se tratan con antibióticos.")
+    activo = models.BooleanField(default=True, help_text="Desmárcalo si quieres ocultarlo temporalmente de la página web.")
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Mito y Verdad"
+        verbose_name_plural = "Mitos y Verdades"
+        ordering = ['-fecha_creacion'] # Los más nuevos saldrán primero
+
+    def __str__(self):
+        return f"Mito: {self.mito}"
