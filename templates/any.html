@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Any ❤️</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --color-amor: #ff4d6d;
-            --color-fondo: #1a1a2e;
+            --color-resplandor: #ff758c;
+            --color-fondo-centro: #2b1055;
+            --color-fondo-borde: #0b0726;
         }
 
         body, html {
@@ -16,43 +21,54 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: var(--color-fondo);
+            /* Fondo de cielo nocturno romántico */
+            background: radial-gradient(circle at center, var(--color-fondo-centro) 0%, var(--color-fondo-borde) 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Fondo de Corazones Animados */
+        /* Corazones flotantes normales */
         .heart {
             position: absolute;
             color: var(--color-amor);
-            font-size: 20px;
             user-select: none;
             pointer-events: none;
-            animation: float 10s linear infinite;
-            opacity: 0;
+            animation: float linear forwards; /* forwards para que desaparezca al final */
+            z-index: 1;
+            filter: drop-shadow(0 0 5px rgba(255, 77, 109, 0.5));
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; transform: translateY(80vh) scale(1) rotate(20deg); }
+            100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
         }
 
-        /* Contenedor del Mensaje */
+        /* Contenedor del Mensaje (Glassmorphism Pro) */
         .card-sorpresa {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 3rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 3rem 2.5rem;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
-            max-width: 500px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            max-width: 450px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 40px rgba(255, 77, 109, 0.1);
             z-index: 10;
             transform: scale(0.8);
             opacity: 0;
             animation: aparecer 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card-sorpresa:hover {
+            transform: scale(1.02) !important;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 60px rgba(255, 77, 109, 0.3);
         }
 
         @keyframes aparecer {
@@ -62,24 +78,28 @@
         h1 {
             color: white;
             font-size: 2.5rem;
+            margin-top: 0;
             margin-bottom: 1rem;
-            text-shadow: 0 0 20px var(--color-amor);
+            text-shadow: 0 0 15px var(--color-amor);
+            letter-spacing: 1px;
         }
 
         p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2rem;
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.7;
             margin-bottom: 2rem;
+            font-weight: 300;
         }
 
+        /* Firma con letra a mano */
         .ps {
             display: block;
-            margin-top: 2rem;
-            color: var(--color-amor);
-            font-weight: bold;
-            font-style: italic;
-            font-size: 1.4rem;
+            margin-top: 1rem;
+            color: var(--color-resplandor);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* Corazón central latiendo */
@@ -87,30 +107,135 @@
             font-size: 4rem;
             display: inline-block;
             animation: latido 1.2s infinite;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 15px var(--color-amor));
         }
 
         @keyframes latido {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.25); }
+            60% { transform: scale(1); }
         }
+
+        /* Botón Interactivo Mágico */
+        .btn-magia {
+            background: linear-gradient(45deg, var(--color-amor), var(--color-resplandor));
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .btn-magia:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.6);
+        }
+
+        .btn-magia:active {
+            transform: translateY(1px);
+        }
+
+        /* =========================================
+           ANIMACIÓN DE LA FAMILIA DE PATITOS
+           ========================================= */
+        .duck-family {
+            position: absolute;
+            bottom: 20px;
+            left: -150px; /* Empiezan fuera de la pantalla */
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            z-index: 5; /* Pasan por detrás de la tarjeta */
+            animation: nadar 20s linear infinite;
+        }
+
+        /* scaleX(-1) voltea el emoji para que mire hacia la derecha */
+        .mama-duck {
+            font-size: 3.5rem;
+            transform: scaleX(-1);
+            animation: balanceo 1s ease-in-out infinite alternate;
+        }
+
+        .baby-duck {
+            font-size: 2rem;
+            transform: scaleX(-1);
+        }
+
+        .baby-1 { animation: saltito 0.4s ease-in-out infinite alternate; }
+        .baby-2 { animation: saltito 0.4s ease-in-out infinite alternate 0.2s; }
+        .baby-3 { animation: saltito 0.4s ease-in-out infinite alternate 0.4s; }
+
+        @keyframes nadar {
+            0% { transform: translateX(-10vw); }
+            100% { transform: translateX(120vw); }
+        }
+
+        @keyframes balanceo {
+            0% { transform: scaleX(-1) rotate(-5deg); }
+            100% { transform: scaleX(-1) rotate(5deg); }
+        }
+
+        @keyframes saltito {
+            0% { transform: scaleX(-1) translateY(0); }
+            100% { transform: scaleX(-1) translateY(-10px); }
+        }
+
     </style>
 </head>
 <body>
 
     <script>
-        function createHeart() {
+        function createHeart(extraClass = '') {
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            heart.innerHTML = '❤️';
+            if (extraClass) heart.classList.add(extraClass);
+            
+            // Corazones de diferentes tipos para dar variedad
+            const corazones = ['❤️', '💖', '✨', '💕'];
+            heart.innerHTML = corazones[Math.floor(Math.random() * corazones.length)];
+            
             heart.style.left = Math.random() * 100 + 'vw';
             heart.style.animationDuration = Math.random() * 3 + 4 + 's';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            
             document.body.appendChild(heart);
             setTimeout(() => { heart.remove(); }, 7000);
         }
-        setInterval(createHeart, 300);
+
+        // Lluvia constante y suave
+        setInterval(() => createHeart(), 400);
+
+        // Explosión de amor al hacer clic en el botón
+        function explosionDeAmor() {
+            // Crea 40 corazones de golpe
+            for(let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 50); // Aparecen uno tras otro rapidísimo
+            }
+            
+            // Cambia el texto del botón temporalmente
+            const btn = document.querySelector('.btn-magia');
+            btn.innerHTML = "¡Te amo mash! ✨";
+            setTimeout(() => { btn.innerHTML = "Presiona aquí ❤️"; }, 3000);
+        }
     </script>
+
+    <div class="duck-family">
+        <div class="mama-duck">🦆🦆</div>
+        <div class="baby-duck baby-1">🐥</div>
+        <div class="baby-duck baby-2">🐥</div>
+        <div class="baby-duck baby-3">🐥</div>
+    </div>
 
     <div class="card-sorpresa">
         <div class="main-heart">❤️</div>
@@ -120,6 +245,9 @@
             Quería recordarte que eres la razón por la que este proyecto tiene sentido y amor. 
             Gracias por ser mi equipo y mi inspiración.
         </p>
+        
+        <button class="btn-magia" onclick="explosionDeAmor()">Presiona aquí ❤️</button>
+        
         <span class="ps">Atte: Tu Feli</span>
     </div>
 
