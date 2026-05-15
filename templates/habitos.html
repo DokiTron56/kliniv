@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row mb-5 text-center mt-5">
+    <div class="col-12 mb-4">
+        <h2 class="display-5 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-heart-pulse-fill text-kliniv-claro me-2"></i>Hábitos Saludables
+        </h2>
+        <p class="lead text-muted">Mejora tu bienestar con hábitos diarios.</p>
+    </div>
+
+    <div class="row g-2 g-md-4 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_alimentacion.png' %}" alt="Alimentación" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Aliméntate Balanceado</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Incluye frutas, verduras y proteínas.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_agua.png' %}" alt="Hidratación" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Hidrátate Bien</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Toma al menos 2 litros de agua al día.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_sueno.png' %}" alt="Sueño" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Duerme lo Suficiente</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Duerme 7~8 horas por noche.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_ejercicio.png' %}" alt="Ejercicio" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Haz Ejercicio</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Actividad física al menos 30 min al día.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_estres.png' %}" alt="Estrés" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Controla el Estrés</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Practica la respiración profunda.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_higiene.png' %}" alt="Higiene" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Cuida tu Higiene</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Lávate las manos y cuida tu higiene.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_tabaco.png' %}" alt="Evitar Tabaco" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Evita Tabaco y Alcohol</h6>
+                <p class="text-muted mb-0 fs-mobile-text">No fumes y limita tu consumo.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm habito-card p-2 p-md-3" style="border-radius: 15px;">
+                <div class="icon-circle"><img src="{% static 'img/icono_salud.png' %}" alt="Salud" class="habito-img"></div>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Revisa tu Salud</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Haz chequeos médicos periódicos.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .icon-circle { width: 75px; height: 75px; background: linear-gradient(135deg, rgba(254, 142, 255, 0.15), rgba(53, 48, 125, 0.05)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-size: 2.2rem; color: var(--kliniv-oscuro); transition: all 0.4s ease; }
+    .habito-img { width: 40px; height: 40px; object-fit: contain; }
+    .habito-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .habito-card:hover { transform: translateY(-8px); border-bottom: 4px solid var(--kliniv-claro) !important; }
+    .habito-card:hover .icon-circle { transform: scale(1.1) rotate(5deg); background: var(--kliniv-claro); }
+    .fs-mobile-title { font-size: 1rem; } .fs-mobile-text { font-size: 0.85rem; }
+    @media (max-width: 768px) {
+        .icon-circle { width: 55px; height: 55px; margin-bottom: 10px; }
+        .habito-img { width: 30px; height: 30px; }
+        .fs-mobile-title { font-size: 0.85rem !important; }
+        .fs-mobile-text { font-size: 0.70rem !important; }
+    }
+</style>
+{% endblock %}

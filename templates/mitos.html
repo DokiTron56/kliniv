@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-5 mt-5">
+    <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-patch-question-fill text-kliniv-claro me-2"></i>Mitos y Verdades
+        </h2>
+        <p class="lead text-muted">Despeja tus dudas sobre la salud con información médica real.</p>
+    </div>
+
+    <div class="col-lg-10 mx-auto">
+        {% for mito_item in mitos %}
+        <div class="row align-items-stretch mb-4 g-2 g-md-0">
+            <div class="col-6 col-md-5 text-center text-md-end">
+                <div class="p-3 p-md-4 bg-white shadow-sm h-100" style="border-radius: 15px; border-right: 4px solid #dc3545;">
+                    <span class="badge bg-danger rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-x-circle me-1"></i> Mito</span>
+                    <p class="mb-0 text-muted fs-mobile-mito">{{ mito_item.mito }}</p>
+                </div>
+            </div>
+            <div class="col-md-2 text-center d-none d-md-flex justify-content-center align-items-center text-muted opacity-25">
+                <i class="bi bi-arrow-left-right" style="font-size: 2.5rem;"></i>
+            </div>
+            <div class="col-6 col-md-5 text-center text-md-start">
+                <div class="p-3 p-md-4 shadow-sm h-100" style="background-color: #f0fff4; border-radius: 15px; border-left: 4px solid #198754;">
+                    <span class="badge bg-success rounded-pill mb-2 px-2 px-md-3 py-1 py-md-2"><i class="bi bi-check-circle me-1"></i> Verdad</span>
+                    <p class="mb-0 text-kliniv-oscuro fw-bold fs-mobile-mito">{{ mito_item.verdad }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center p-4 bg-light shadow-sm" style="border-radius: 15px;">
+            <p class="text-muted mb-0 fst-italic">Pronto publicaremos nuevos mitos de salud aquí.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .fs-mobile-mito { font-size: 1.1rem; }
+    @media (max-width: 768px) { .fs-mobile-mito { font-size: 0.80rem !important; } }
+</style>
+{% endblock %}

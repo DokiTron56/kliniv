@@ -52,7 +52,7 @@
         }
 
         /* =========================================
-           BOTÓN DE EMERGENCIA (ESTÁTICO A LA DERECHA)
+           BOTÓN DE EMERGENCIA (ESTÁTICO AL CENTRO)
            ========================================= */
         .btn-emergencia-estatico {
             background-color: #dc3545;
@@ -118,10 +118,11 @@
                         </a>
                         <ul class="dropdown-menu border-0 shadow-lg mt-2" aria-labelledby="navbarBienestar" style="border-radius: 15px;">
                             <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#consejos"><i class="bi bi-journal-medical text-kliniv-claro me-2"></i>Consejos de Salud</a></li>
-                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#habitos"><i class="bi bi-heart-pulse-fill text-kliniv-claro me-2"></i>Hábitos Saludables</a></li>
-                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#mitos"><i class="bi bi-patch-question-fill text-kliniv-claro me-2"></i>Mitos y Verdades</a></li>
-                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#calendario"><i class="bi bi-calendar2-heart-fill text-kliniv-claro me-2"></i>Calendario</a></li>
-                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'inicio' %}#botiquin"><i class="bi bi-bag-plus-fill text-kliniv-claro me-2"></i>Botiquín Básico</a></li>
+                            
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'habitos' %}"><i class="bi bi-heart-pulse-fill text-kliniv-claro me-2"></i>Hábitos Saludables</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'mitos' %}"><i class="bi bi-patch-question-fill text-kliniv-claro me-2"></i>Mitos y Verdades</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'calendario' %}"><i class="bi bi-calendar2-heart-fill text-kliniv-claro me-2"></i>Calendario</a></li>
+                            <li><a class="dropdown-item py-2 text-muted fw-bold" href="{% url 'botiquin' %}"><i class="bi bi-bag-plus-fill text-kliniv-claro me-2"></i>Botiquín Básico</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -134,7 +135,7 @@
         {% endblock %}
     </main>
 
-    <div class="container d-flex justify-content-end mb-4">
+    <div class="container d-flex justify-content-center mb-4">
         <a href="tel:131" class="btn-emergencia-estatico">
             <i class="bi bi-telephone-fill me-2"></i> Emergencia 131
         </a>
@@ -165,20 +166,14 @@
                         return; 
                     }
 
-                    const vaAEvaluacion = href.includes('evaluacion');
-                    const vuelveAInicio = href === '/';
-                    const estamosEnInicio = window.location.pathname === '/';
+                    e.preventDefault(); 
+                    
+                    document.body.classList.remove('page-transition-enter-active');
+                    document.body.classList.add('page-transition-exit');
 
-                    if (vaAEvaluacion || (vuelveAInicio && !estamosEnInicio)) {
-                        e.preventDefault(); 
-                        
-                        document.body.classList.remove('page-transition-enter-active');
-                        document.body.classList.add('page-transition-exit');
-
-                        setTimeout(function() {
-                            window.location.href = href;
-                        }, 250);
-                    }
+                    setTimeout(function() {
+                        window.location.href = href;
+                    }, 250);
                 });
             });
         });

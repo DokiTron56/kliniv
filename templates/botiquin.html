@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-5 text-center mt-5">
+    <div class="col-12 mb-4">
+        <h2 class="display-5 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-bag-plus-fill text-kliniv-claro me-2"></i>Botiquín Básico en Casa
+        </h2>
+        <p class="lead text-muted">Lo esencial que nunca debe faltar para emergencias menores.</p>
+    </div>
+
+    <div class="row g-2 g-md-3 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-thermometer-half fs-1 mb-2 text-danger"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Termómetro</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Controlar fiebre</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-capsule fs-1 mb-2 text-primary"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Analgésicos</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Dolores y fiebre</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-bandaid fs-1 mb-2 text-warning"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Gasas y Vendas</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Heridas y cortes</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-shield-plus fs-1 mb-2 text-info"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Antiséptico</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Limpiar heridas</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-scissors fs-1 mb-2 text-secondary"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Tijeras y Pinzas</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Retirar objetos</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card h-100 border-0 shadow-sm p-3 habito-card" style="border-radius: 15px;">
+                <i class="bi bi-droplet-half fs-1 mb-2" style="color: var(--kliniv-claro);"></i>
+                <h6 class="fw-bold text-kliniv-oscuro mb-1 fs-mobile-title">Crema Piel</h6>
+                <p class="text-muted mb-0 fs-mobile-text">Resequedad y sol</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .habito-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .habito-card:hover { transform: translateY(-8px); border-bottom: 4px solid var(--kliniv-claro) !important; }
+    .fs-mobile-title { font-size: 1rem; } .fs-mobile-text { font-size: 0.85rem; }
+    @media (max-width: 768px) {
+        .fs-mobile-title { font-size: 0.85rem !important; }
+        .fs-mobile-text { font-size: 0.70rem !important; }
+    }
+</style>
+{% endblock %}

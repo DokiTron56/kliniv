@@ -24,4 +24,10 @@ urlpatterns = [
     path('evaluacion/', views.evaluacion, name='evaluacion'),
     path('procesar/', views.procesar_evaluacion, name='procesar_evaluacion'),
     path('any/', views.sorpresa_any, name='any'),
+    
+    # NUEVAS RUTAS SEPARADAS PARA LA GUÍA DE BIENESTAR
+    path('habitos/', views.habitos, name='habitos'),
+    path('mitos/', views.mitos, name='mitos'),
+    path('calendario/', views.calendario, name='calendario'),
+    path('botiquin/', views.botiquin, name='botiquin'),
 ]

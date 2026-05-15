@@ -14,11 +14,11 @@ class Recomendacion(models.Model):
     texto_recomendacion = models.TextField()
     medicamentos_sugeridos = models.CharField(max_length=200, help_text="Solo venta libre")
     
-    # --- NUEVO CAMPO: CONTRAINDICACIONES ---
-    contraindicaciones = models.TextField(
+    # --- NUEVO CAMPO: PRECAUCIONES ---
+    precauciones = models.TextField(
         blank=True, 
         default="", 
-        help_text="Casos en los que NO se debe seguir esta recomendación (Ej: No usar en caso de embarazo o hipertensión)."
+        help_text="Precauciones a considerar antes de seguir esta recomendación (Ej: Precaución en caso de embarazo o hipertensión)."
     )
     
     # --- CAMPO ADVERTENCIAS EXISTENTE ---

@@ -3,8 +3,7 @@ from django.db.models import Count
 from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad
 
 def inicio(request):
-    # Traemos TODOS los datos necesarios para la gran página principal
-    mitos_activos = MitoVerdad.objects.filter(activo=True)
+    # Traemos TODOS los datos necesarios para la página principal
     lista_consejos = Consejo.objects.all().order_by('-fecha_publicacion')
     total_consultas = Consulta.objects.count()
     sintomas_frecuentes = Consulta.objects.values('sintoma__nombre').annotate(total=Count('id')).order_by('-total')
@@ -12,7 +11,6 @@ def inicio(request):
     contexto = {
         'consejos': lista_consejos,
         'total_consultas': total_consultas,
-        'mitos': mitos_activos,
         'sintomas_frecuentes': sintomas_frecuentes
     }
     return render(request, 'index.html', contexto)
@@ -45,3 +43,21 @@ def procesar_evaluacion(request):
 
 def sorpresa_any(request):
     return render(request, 'any.html')
+
+# ==========================================
+# NUEVAS VISTAS: GUÍA DE BIENESTAR
+# ==========================================
+
+def habitos(request):
+    return render(request, 'habitos.html')
+
+def mitos(request):
+    # Aquí es donde ahora enviamos los mitos activos a su propia página
+    mitos_activos = MitoVerdad.objects.filter(activo=True)
+    return render(request, 'mitos.html', {'mitos': mitos_activos})
+
+def calendario(request):
+    return render(request, 'calendario.html')
+
+def botiquin(request):
+    return render(request, 'botiquin.html')
