@@ -30,4 +30,5 @@ urlpatterns = [
     path('mitos/', views.mitos, name='mitos'),
     path('calendario/', views.calendario, name='calendario'),
     path('botiquin/', views.botiquin, name='botiquin'),
+    path('medicamentos-otc/', views.medicamentos_otc, name='medicamentos_otc'),
 ]

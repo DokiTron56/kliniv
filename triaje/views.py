@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
-from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad
+from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad, MedicamentoOTC
 
 def inicio(request):
     # Traemos TODOS los datos necesarios para la página principal
@@ -61,3 +61,9 @@ def calendario(request):
 
 def botiquin(request):
     return render(request, 'botiquin.html')
+
+# (Asegúrate de importar MedicamentoOTC arriba junto a MitoVerdad)
+
+def medicamentos_otc(request):
+    lista_medicamentos = MedicamentoOTC.objects.filter(activo=True)
+    return render(request, 'medicamentos_otc.html', {'medicamentos': lista_medicamentos})

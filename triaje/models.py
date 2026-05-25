@@ -60,3 +60,19 @@ class MitoVerdad(models.Model):
 
     def __str__(self):
         return f"Mito: {self.mito}"
+
+class MedicamentoOTC(models.Model):
+    nombre = models.CharField(max_length=100, help_text="Ej: Paracetamol 500mg")
+    para_que_sirve = models.CharField(max_length=200, help_text="Ej: Alivia el dolor leve a moderado y reduce la fiebre.")
+    dosis_recomendada = models.CharField(max_length=200, help_text="Ej: 1 comprimido cada 8 horas (Máx. 4 al día).")
+    precauciones = models.TextField(blank=True, help_text="Ej: No usar en caso de daño hepático o consumo de alcohol.")
+    activo = models.BooleanField(default=True, help_text="Desmárcalo para ocultarlo de la página.")
+    fecha_registro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Medicamento OTC"
+        verbose_name_plural = "Medicamentos OTC"
+        ordering = ['nombre'] # Se ordenarán alfabéticamente de la A a la Z
+
+    def __str__(self):
+        return self.nombre

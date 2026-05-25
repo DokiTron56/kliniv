@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mb-5 text-center mt-5">
+    <div class="col-12 mb-4">
+        <h2 class="display-5 fw-bold text-kliniv-oscuro">
+            <i class="bi bi-capsule-pill text-kliniv-claro me-2"></i>Medicamentos OTC
+        </h2>
+        <p class="lead text-muted">Lista de medicamentos de venta libre para el autocuidado responsable.</p>
+    </div>
+
+    <div class="col-lg-11 mx-auto">
+        <div class="row g-4 justify-content-center text-start">
+            
+            {% for med in medicamentos %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm med-card" style="border-radius: 20px; overflow: hidden; border-top: 5px solid var(--kliniv-claro) !important;">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h4 class="fw-bold text-kliniv-oscuro mb-1">{{ med.nombre }}</h4>
+                                <span class="badge rounded-pill bg-light text-dark border"><i class="bi bi-shop me-1"></i>Venta Libre</span>
+                            </div>
+                            <div class="med-icon">
+                                <i class="bi bi-prescription2 text-kliniv-claro fs-2"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h6 class="fw-bold text-dark mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>¿Para qué sirve?</h6>
+                            <p class="text-muted small mb-0">{{ med.para_que_sirve }}</p>
+                        </div>
+                        
+                        <div class="mb-3 p-3 bg-light rounded-3">
+                            <h6 class="fw-bold text-dark mb-1"><i class="bi bi-clock-history text-primary me-2"></i>Dosis Sugerida:</h6>
+                            <p class="text-muted small mb-0">{{ med.dosis_recomendada }}</p>
+                        </div>
+
+                        {% if med.precauciones %}
+                        <div>
+                            <h6 class="fw-bold text-danger mb-1"><i class="bi bi-shield-exclamation me-2"></i>Precauciones:</h6>
+                            <p class="text-muted small mb-0">{{ med.precauciones }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center p-5 bg-white shadow-sm" style="border-radius: 20px;">
+                <i class="bi bi-box-seam text-muted" style="font-size: 3rem;"></i>
+                <p class="text-muted mt-3 fs-5">Aún no hay medicamentos registrados en el panel.</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .med-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .med-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important; }
+    .med-icon { background: rgba(254, 142, 255, 0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+</style>
+{% endblock %}
