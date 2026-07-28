@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad, MedicamentoOTC
+from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad, MedicamentoOTC, PagoArgolla
 
 admin.site.register(Sintoma)
 admin.site.register(Recomendacion)
@@ -17,3 +17,9 @@ class MedicamentoOTCAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'para_que_sirve', 'activo')
     list_filter = ('activo',)
     search_fields = ('nombre', 'para_que_sirve')
+
+
+@admin.register(PagoArgolla)
+class PagoArgollaAdmin(admin.ModelAdmin):
+    list_display = ('quien_paga', 'a_quien', 'monto', 'fecha', 'nota')
+    list_filter = ('quien_paga', 'a_quien')

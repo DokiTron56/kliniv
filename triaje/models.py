@@ -83,3 +83,28 @@ class MedicamentoOTC(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class PagoArgolla(models.Model):
+    PAGADOR_CHOICES = [
+        ('Feli', 'Feli'),
+        ('Any', 'Any'),
+        ('Andreina', 'Andreina (Préstamo)'), # NUEVA OPCIÓN
+    ]
+    DESTINO_CHOICES = [
+        ('Cecilia', 'Cecilia (Joyera)'),
+        ('Andreina', 'Andreina (Mamá)'),
+    ]
+    
+    quien_paga = models.CharField(max_length=15, choices=PAGADOR_CHOICES) # Cambié max_length a 15
+    a_quien = models.CharField(max_length=15, choices=DESTINO_CHOICES)
+    monto = models.IntegerField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    nota = models.CharField(max_length=200, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Pago de Argolla"
+        verbose_name_plural = "Pagos de Argollas"
+        ordering = ['-fecha']
+
+    def __str__(self):
+        return f"{self.quien_paga} pagó ${self.monto} a {self.a_quien}"

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.db.models import Count
-from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad, MedicamentoOTC
+from .models import Sintoma, Recomendacion, Consulta, Consejo, MitoVerdad, MedicamentoOTC, PagoArgolla
 
 def inicio(request):
     # Traemos TODOS los datos necesarios para la página principal
@@ -67,3 +67,55 @@ def botiquin(request):
 def medicamentos_otc(request):
     lista_medicamentos = MedicamentoOTC.objects.filter(activo=True)
     return render(request, 'medicamentos_otc.html', {'medicamentos': lista_medicamentos})
+
+
+def argollas(request):
+    # 1. Si el formulario envía un nuevo pago, lo guardamos
+    if request.method == 'POST':
+        quien_paga = request.POST.get('quien_paga')
+        a_quien = request.POST.get('a_quien')
+        monto = int(request.POST.get('monto', 0))
+        
+        if quien_paga and a_quien and monto > 0:
+            PagoArgolla.objects.create(
+                quien_paga=quien_paga,
+                a_quien=a_quien,
+                monto=monto,
+                nota="Abono desde la web"
+            )
+        return redirect('argollas') # Recargamos la página limpia
+
+    # 2. Valores Base Iniciales (Julio 2026)
+    deuda_cecilia = 536000
+    deuda_andreina = 73000
+    aporte_feli = 46000
+    aporte_any = 35000
+
+    # 3. Sumar y restar según la base de datos
+    pagos = PagoArgolla.objects.all()
+    for pago in pagos:
+        # A quién se le abonó el dinero (la deuda baja)
+        if pago.a_quien == 'Cecilia':
+            deuda_cecilia = max(0, deuda_cecilia - pago.monto)
+        elif pago.a_quien == 'Andreina':
+            deuda_andreina = max(0, deuda_andreina - pago.monto)
+        
+        # De dónde salió el dinero
+        if pago.quien_paga == 'Feli':
+            aporte_feli += pago.monto
+        elif pago.quien_paga == 'Any':
+            aporte_any += pago.monto
+        elif pago.quien_paga == 'Andreina':
+            # Si mamá sacó de su bolsillo, nuestra deuda con ella sube
+            deuda_andreina += pago.monto
+
+    # 4. Formatear para que se vea como dinero (ej: 536.000)
+    context = {
+        'deuda_cecilia': f"{deuda_cecilia:,}".replace(',', '.'),
+        'deuda_andreina': f"{deuda_andreina:,}".replace(',', '.'),
+        'aporte_feli': f"{aporte_feli:,}".replace(',', '.'),
+        'aporte_any': f"{aporte_any:,}".replace(',', '.'),
+        'pagos': pagos,
+    }
+    
+    return render(request, 'argollas.html', context)
